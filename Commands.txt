@@ -1,0 +1,14 @@
+//Express and body parser
+node i express body-parser
+
+//Injeccion dependencies
+npm i awilix
+
+//Postgresql (Optional)
+npm i pg
+
+//Mysql (used)
+npm i mysql2
+
+//Inyectar variables de entorno
+npm i dotenv
