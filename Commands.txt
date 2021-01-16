@@ -10,5 +10,8 @@ npm i pg
 //Mysql (used)
 npm i mysql2
 
-//Inyectar variables de entorno
+//Inyectar variables de entorno (solo para desarrollo)
 npm i dotenv
+
+//CORS
+npm i cors
