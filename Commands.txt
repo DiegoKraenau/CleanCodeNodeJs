@@ -15,3 +15,12 @@ npm i dotenv
 
 //CORS
 npm i cors
+
+//Comprimir peticiones http
+ npm i compression
+
+//Ayuda a elaborar entidades de dominio
+npm i structure
+
+//Sequelize
+npm in sequelize

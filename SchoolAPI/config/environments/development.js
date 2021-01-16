@@ -1,10 +1,11 @@
 module.exports = {
     PORT: process.env.PORT,
     DB: {
-        user : "root",
-        password : process.env.DB_PASSWORD,
+        username : "root",
+        password : "admin",
         database : "school_dev",
-        host : process.env.DB_HOST,
+        host : "localhost",
+        port: 3333,
         dialect : "mysql"
     }
 }
