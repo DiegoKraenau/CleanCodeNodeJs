@@ -1,8 +1,8 @@
-module.exports = (sequelize,DataTypes)=>{
-    return sequelize.define(
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define(
         "users",
         {
-            id:{
+            id: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
                 primaryKey: true,
@@ -12,7 +12,7 @@ module.exports = (sequelize,DataTypes)=>{
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            lastname:{
+            lastname: {
                 type: DataTypes.STRING,
                 allowNull: true
             }
@@ -22,4 +22,19 @@ module.exports = (sequelize,DataTypes)=>{
             timestamps: false  //updated and created
         }
     );
+
+    User.associate = function (models) {
+        User.belongsTo(models.classrooms, {
+            foreignKey: "classroomId",
+            as: "classrooms"
+        });
+
+        User.belongsToMany(models.courses, {
+            through: "userCourses",
+            as: "courses",
+            foreignKey: "id"
+        });
+    };
+
+    return User;
 };

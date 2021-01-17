@@ -1,44 +1,53 @@
-const {asClass,createContainer,asFunction,asValue} = require('awilix');
+const { asClass, createContainer, asFunction, asValue } = require('awilix');
 
-const Routes = require('../api/routes');
+//App start
 const Server = require('./server');
 const StartUp = require('./startup');
 const config = require('../config/environments');
 
-
+//Routes
+const Routes = require('../api/routes');
 const UserRoutes = require('../api/routes/user.routes');
-const {UserController} = require('../api/controllers');
-const {UserService} = require('../services');
-const {UserRepository} =require('../dal/repositories')
 
+//business
+const {UserBusiness} = require('../domain');
 
-const container = createContainer();
+//Controllers
+const { UserController } = require('../api/controllers');
+
+//Services
+const { UserService } = require('../services');
+
+//Repository
+const { UserRepository } = require('../dal/repositories')
+
+//db
 const db = require('../dal/entities');
 
-container.register({
-    app : asClass(StartUp).singleton(),//Only one instance
-    server: asClass(Server).singleton()
-})
-.register({
-    UserController : asClass(UserController).singleton()
-})
-.register({
-    router: asFunction(Routes).singleton()
-})
-.register({
-    config : asValue(config)
-})
-.register({
+const container = createContainer();
+
+container.register({//Api Layer
+    app: asClass(StartUp).singleton(),//Only one instance
+    server: asClass(Server).singleton(),
+    router: asFunction(Routes).singleton(),
+    UserController: asClass(UserController).singleton(),
     UserRoutes: asFunction(UserRoutes).singleton()
 })
 .register({
-    UserService: asClass(UserService).singleton()
+    config: asValue(config)
 })
+.register({
+    db: asValue(db)
+})
+.register({
+    UserService: asClass(UserService).singleton()
+    })
 .register({
     UserRepository: asClass(UserRepository).singleton()
 })
 .register({
-    db: asValue(db)
+    UserBusiness: asClass(UserBusiness).singleton()
 });
+
 
 module.exports = container;

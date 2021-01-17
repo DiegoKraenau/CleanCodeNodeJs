@@ -6,6 +6,7 @@ module.exports = {
         database : "school_dev",
         host : "localhost",
         port: 3399,
-        dialect : "mysql"
+        dialect : "mysql",
+        logging :false
     }
 }
