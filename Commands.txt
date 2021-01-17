@@ -19,8 +19,32 @@ npm i cors
 //Comprimir peticiones http
  npm i compression
 
-//Ayuda a elaborar entidades de dominio
-npm i structure
+//npm i structure (solo de node v12 para abajo)
 
-//Sequelize
-npm in sequelize
+//Automapper
+npm i automapper-js
+
+//Sequelize CLI
+npm i -g sequelize-cli
+sequelize init (para crear un proyecto de sequelize)
+
+//To create models in sequelize cli
+sequelize model:create --name Course --attributes name:string,status:string
+
+sequelize model:create --name Subject --attributes name:string description:string status:string
+
+sequelize model:create --name Teacher --attributes name:string,lastname:string,biography:string,birthdate:date,email:string,username:string,password:string,status:string
+
+sequelize model:create --name Section --attributes teacherId:integer,subjectId:integer,courseId:integer,status:string
+
+sequelize model:create --name Student --attributes name:string,lastname:string,birthdate:date,email:string,username:string,password:string,status:string
+
+sequelize model:create --name Registration --attributes sectionId:integer,studentId:integer,status:string
+//URL CONNECTION FOR PG
+
+sequelize db:migrate --url "postgres://postgres:mysecretpassword@localhost:5432/school_dev"
+
+//URL CONNECTION FOR MYSQL
+
+sequelize db:migrate --url "mysql://root:root@localhost:3399/school_dev"
+

@@ -1,0 +1,8 @@
+const path = require('path');
+
+module.exports = {
+    "config": path.resolve('./config','config.json'),//ruta de la configuraion de nuestra base de datos
+    "models-path": path.resolve('./dal/models'),//ruta donde estarán las entidades de base de datos
+    "seeders-path": path.resolve('./dal/seeders'),//ruta de los generados de data dummy(data para testear)
+    "migrations-path": path.resolve('./dal/migrations')//ruta donde estarán las migraciones
+};
