@@ -11,6 +11,16 @@ class StudentBusiness extends BaseBusiness{
         const entities = await this._EntityRepository.getAllPlus();
         return entities.map(entity=>mapper(this._EntityToMap,entity.toJSON()));
     }
+
+    async login(user){
+        const token = await this._EntityRepository.login(user);
+        return token;
+    }
+
+    async verifyUser(user){
+        const token = await this._EntityRepository.verifyUser(user);
+        return token;
+    }
 }
 
 module.exports = StudentBusiness;

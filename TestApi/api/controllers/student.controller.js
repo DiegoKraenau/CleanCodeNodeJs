@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 
 class StudentController {
 
@@ -21,9 +22,26 @@ class StudentController {
 
     async createUser(req,res){
         const {body} = req;
+        body.password = bcrypt.hashSync(req.body.password,10);
         const user = await this._studentService.create(body);
         res.send(user)
     }
+
+
+    async login(req,res){
+        const {body} = req;
+        const token = await this._studentService.login(body);
+        res.send(token)
+    }
+
+    async verifyUser(req,res){
+        const {body} = req;
+        const token = await this._studentService.verifyUser(body);
+        res.send(token);
+    }
+
+
+    
 
 }
 

@@ -11,6 +11,16 @@ class StudentService extends BaseService{
         return entities;
     }
 
+    async login(user){
+        const token = await this._entityBunisess.login(user);
+        return token;
+    }
+
+    async verifyUser(user){
+        const token = await this._entityBunisess.verifyUser(user);
+        return token;
+    }
+
 }
 
 module.exports = StudentService;
